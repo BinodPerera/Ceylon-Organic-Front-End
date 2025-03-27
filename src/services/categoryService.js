@@ -1,4 +1,4 @@
-const API_URL = "http://ceylon-organic-back-end.railway.internal/api/category";
+const API_URL = "http://ceylon-organic-back-end-production.up.railway.app/api/category";
 
 // ✅ Get All Categories
 export const getCategories = async () => {

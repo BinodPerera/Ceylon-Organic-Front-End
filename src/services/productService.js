@@ -1,4 +1,4 @@
-const API_URL = "http://ceylon-organic-back-end.railway.internal/api/product";
+const API_URL = "http://ceylon-organic-back-end-production.up.railway.app/api/product";
 
 // send request to insert Product
 export const insertProduct = async (formData) => {
