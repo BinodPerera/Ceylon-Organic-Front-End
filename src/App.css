@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

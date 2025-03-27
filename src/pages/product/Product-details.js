@@ -1,45 +1,52 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-function ProductDetails(){
+import { getProductsById } from "../../services/productService";
+
+import "./Product-details.css";
+
+const ProductDetails = () => {
+
     const { product_id } = useParams();
-    const [product, setProduct] = useState(null);
 
-    const API_URL = `http://localhost:5001/api/products/${product_id}`;
 
-    // getting item details
+
+    const [product, setProduct] = useState({});
+
     useEffect(() => {
-        axios.get(API_URL)
-            .then(response => setProduct(response.data))
-            .catch(error => console.error('Error fetching product data:', error));
-    }, [API_URL]);
-
-    if (!product) {
-        return <div>Please wait! Loading...</div>;
-    }
+        const fetchProductDetails = async () => {
+            try {
+                const data = await getProductsById(product_id);
+                setProduct(data);
+            }
+            catch (error){
+                console.log(error);
+            }
+        }
+        fetchProductDetails();
+    }, [product_id]);
 
     return (
-        <section>
-            <div className="container-lg">
-                <div className="row">
-                    <div className="col-lg-6 pt-5 mt-5">
-                        <h2 className="display-1 ls-1"><span className="fw-bold text-primary">{product.name}</span></h2>
-                        <p className="fs-4">{product.description}</p>
-                        <div className="d-flex gap-3">
-                            <a href="/products" className="btn btn-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Buy Now</a>
-                            <a href="#" className="btn btn-dark text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 pt-5 mt-5">
-                        <div className="d-flex gap-3">
-                            <img src={`assets/images/products/${product.image}`} style={{height: '300px'}} alt={product.name} />
-                        </div>
-                    </div>
+        <div className="item-details-container">
+        {
+            !product ? <h1>Loading..!</h1> :
+            <div className="row">
+                <div className="col-md-6">
+                    <img src={`http://localhost:5001/${product.image}`} alt="Product Thumbnail" className="product-img-fluid" />
+                </div>
+                <div className="col-md-6">
+                    <h2 className="product-name">{product.name}</h2>
+                    <p className="product-description">{product.description}</p>
+                    <p className="product-price">Price: ${product.price}</p>
+                    <p className="product-category">Category: {product.category}</p>
+                    <br />
+                    <button className="btn btn-secondary">Add to Cart</button>
                 </div>
             </div>
-        </section>
+
+        }
+        </div>
     );
-}
+};
 
 export default ProductDetails;

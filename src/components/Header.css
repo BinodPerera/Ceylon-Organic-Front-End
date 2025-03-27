@@ -1,0 +1,13 @@
+.nav-btn {
+    border-radius: 10px;
+    border: none;
+    background-color: #84e066;
+    color: #fff;
+}
+
+.nav-btn:hover {
+    /* adding transition */
+    transition: 1s;
+    background-color: #60ea1b;
+    color: #000000;
+}

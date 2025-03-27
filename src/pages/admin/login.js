@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { loginUser } from '../../services/authService';
 import { useNavigate } from "react-router-dom"; // ✅ Import for redirection
 
+import './login.css';
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,11 +23,11 @@ const Login = () => {
 
     
     return (
-        <div class="col-sm-8 p-5 text-white" style={{ backgroundColor: "purple" }}>
+        <div className="login-container">
             <h2 className="text-center">Sign in</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleLogin}>
-                <div class="mb-3 mt-3">
+                <div className="mb-3 mt-3">
                     <input 
                         type="email" 
                         className="form-control mb-2"  
@@ -35,7 +37,7 @@ const Login = () => {
                         required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <input 
                         type="password" 
                         className="form-control mb-2"  
@@ -45,7 +47,7 @@ const Login = () => {
                         required
                     />
                 </div>
-            <button type="submit" className="btn btn-primary w-100">Submit</button>
+            <button type="submit" className="submit-btn">Sign in</button>
             </form>
             <p>Need to create Account? <a href="/register">Create Account</a></p>
         </div>

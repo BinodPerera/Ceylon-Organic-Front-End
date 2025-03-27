@@ -38,35 +38,64 @@ const EditProduct = () => {
         setCategories(data);
     }
     fetchCategories();
+
+    const handleChange = (e) => {
+        if(e.target.name === "image") {
+            setFormData({...formData, image: e.target.files[0]});
+        }
+        else {
+            setFormData({...formData, [e.target.name]: e.target.value});
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formDataToSend = new FormData();
+        formDataToSend.append("name", formData.name);
+        formDataToSend.append("description", formData.description);
+        formDataToSend.append("category", formData.category);
+        formDataToSend.append("price", formData.price);
+        if(formData.image instanceof File){
+            formDataToSend.append("image", formData.image);
+        }
+
+        try {
+            await updateProduct(id, formDataToSend);
+            alert("Product updated successfully");
+        }
+        catch (error){
+            alert(error);
+        }
+    }
     
     return (
-        <div class="col-sm p-3 min-vh-100">
+        <div className="col-sm p-3 min-vh-100">
             <h2>Edit Product</h2>
-            <form>
-                <div class="mb-3 mt-3">
-                    <input type="text" name="name" value={formData.name} className="form-control mb-2" required />
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3 mt-3">
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} className="form-control mb-2" required />
                 </div>
-                <div class="mb-3 mt-3">
-                    <input type="file" name="image" className="form-control mb-2" />
+                <div className="mb-3 mt-3">
+                    <input type="file" name="image" onChange={handleChange} className="form-control mb-2" />
                 </div>
-                <div class="mb-3 mt-3">
-                    <label for="category">Select Category</label>
-                    <select name="category" value={formData.category} className="form-control mb-2" required>
+                <div className="mb-3 mt-3">
+                    <label htmlFor="category">Select Category</label>
+                    <select name="category" value={formData.category} onChange={handleChange} className="form-control mb-2" required>
                         <option value="">Select Category</option>
                         {categories.map(category => (
                             <option key={category._id} value={category._id}>{category.name}</option>
                         ))}
                     </select>
                 </div>
-                <div class="mb-3 mt-3">
-                    <label for="description">Enter Description</label>
-                    <textarea name="description" value={formData.description} className="form-control mb-2" rows={5} required></textarea>
+                <div className="mb-3 mt-3">
+                    <label htmlFor="description">Enter Description</label>
+                    <textarea name="description" value={formData.description} onChange={handleChange} className="form-control mb-2" rows={5} required></textarea>
                 </div>
-                <div class="mb-3 mt-3">
-                    <label for="price">Enter Price</label>
-                    <input type="number" name="name" value={formData.price} className="form-control mb-2" required />
+                <div className="mb-3 mt-3">
+                    <label htmlFor="price">Enter Price</label>
+                    <input type="number" name="price" value={formData.price} onChange={handleChange} className="form-control mb-2" required />
                 </div>
-                <div class="mb-3 mt-3">
+                <div className="mb-3 mt-3">
                 <button type="submit" className="btn btn-success w-50">Update</button>
                 </div>
             </form>

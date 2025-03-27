@@ -1,0 +1,33 @@
+.item-details-container {
+    margin: 20px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.product-img-fluid {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 10px;
+
+    /* adding shadow */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.product-name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ff4500;
+}

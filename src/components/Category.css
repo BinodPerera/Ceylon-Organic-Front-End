@@ -1,8 +1,36 @@
 .card-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts based on screen width */
     gap: 10px; /* Space between cards */
 }
+
+/* For smaller screens (e.g., tablets) */
+@media (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    }
+}
+
+.category-title {
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 card per row */
+    }
+}
+
     
 .card {
     display: flex;

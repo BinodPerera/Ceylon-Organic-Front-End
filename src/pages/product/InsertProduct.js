@@ -50,7 +50,7 @@ const InsertProduct = () => {
   }
 
   return (
-    <div class="col-sm p-3 min-vh-100">
+    <div className="col-sm p-3 min-vh-100">
       <h2 className="text-center">Insert Product</h2>
 
       {/* Form to Add Product */}

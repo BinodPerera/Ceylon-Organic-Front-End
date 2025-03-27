@@ -47,10 +47,11 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:category_id" element={<Products />} />
         <Route path="/add-product" element={<div class="container-fluid"><div class="row"><SideNav /><InsertProduct /></div></div>} />
         <Route path="/manage-products" element={<div class="container-fluid"><div class="row"><SideNav /><ManageProduct /></div></div>} />
         <Route path="/edit-product/:id" element={<div class="container-fluid"><div class="row"><SideNav /><EditProduct /></div></div>} />
-        <Route path='/:product_id' element={<ProductDetails />} />
+        <Route path='/product-details/:product_id' element={<ProductDetails />} />
 
         <Route path="/users" element={<Users />} />
         <Route path="/insert_user" element={<InsertUser />} />

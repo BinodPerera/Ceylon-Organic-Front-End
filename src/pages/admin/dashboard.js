@@ -32,7 +32,7 @@ const Dashboard = () => {
 
     return (
         
-                <div class="col-sm p-3 min-vh-100">
+                <div className="col-sm p-3 min-vh-100">
                 <h2>Welcome to Dashboard</h2>
                 {user ? (
                     <div>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { registerUser } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
+import './register.css';
+
 const Register = () => {
 
     const [username, setUsername] = useState("");
@@ -29,7 +31,7 @@ const Register = () => {
     }
 
     return (
-        <div class="col-sm-8 p-5 text-white" style={{ backgroundColor: "purple" }}>
+        <div class="register-container">
             <h2 className="text-center">Create Account</h2>
             <form onSubmit={handleRegister}>
                 <div class="mb-3 mt-3">
@@ -72,7 +74,7 @@ const Register = () => {
                         required
                     />
                 </div>
-            <button type="submit" className="btn btn-primary w-100">Create Account</button>
+            <button type="submit" className="submit-btn">Create Account</button>
             </form>
             <p>Alredy have Account? <a href="/login">Sign in</a></p>
         </div>
