@@ -1,4 +1,4 @@
-const API_URL = "https://ceylon-organic-back-end.railway.internal/api/product";
+const API_URL = "https://ceylon-organic-back-end-production.up.railway.app/api/product";
 // const API_URL = "http://localhost:5001/api/product";
 
 // send request to insert Product

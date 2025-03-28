@@ -1,5 +1,5 @@
 
-const API_URL = "https://ceylon-organic-back-end.railway.internal/api/auth";
+const API_URL = "https://ceylon-organic-back-end-production.up.railway.app/api/auth";
 // const API_URL = "http://localhost:5001/api/auth";
 
 export const loginUser = async ( email, password) => {
