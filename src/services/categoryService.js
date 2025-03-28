@@ -1,4 +1,4 @@
-const API_URL = "https://ceylon-organic-back-end.railway.internal/api/category";
+const API_URL = "https://ceylon-organic-back-end-production.up.railway.app/api/category";
 // const API_URL = "http://localhost:5001/api/category";
 
 // ✅ Get All Categories
