@@ -1,6 +1,10 @@
+
+const API_URL = "https://ceylon-organic-back-end.railway.internal/api/auth";
+// const API_URL = "http://localhost:5001/api/auth";
+
 export const loginUser = async ( email, password) => {
     try {
-        const response = await fetch( "http://ceylon-organic-back-end-production.up.railway.app/api/auth/login",{
+        const response = await fetch( `${API_URL}/login`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -18,7 +22,7 @@ export const loginUser = async ( email, password) => {
 
 export const getProfile = async () => {
     try {
-        const response = await fetch("http://ceylon-organic-back-end-production.up.railway.app/api/auth/profile", {
+        const response = await fetch(`${API_URL}/profile`, {
             method: "GET",
             credentials: "include", // ✅ Required to send cookies
         });
@@ -38,7 +42,7 @@ export const getProfile = async () => {
 export const registerUser = async ( username, email, password) => {
     console.log(username);
     try {
-        const response = await fetch("http://ceylon-organic-back-end-production.up.railway.app/api/auth/register", {
+        const response = await fetch(`${API_URL}/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({username, email, password }),
@@ -56,7 +60,7 @@ export const registerUser = async ( username, email, password) => {
 
 export const logoutUser = async () => {
     try {
-        const response = await fetch("http://ceylon-organic-back-end-production.up.railway.app/api/auth/logout", {
+        const response = await fetch(`${API_URL}/logout`, {
             method: "POST",
             credentials: "include", // ✅ Important for sending cookies
         });
