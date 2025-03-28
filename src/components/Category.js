@@ -41,7 +41,7 @@ function Category(){
                     <div className="col">
                       <div className="product-item">
                         <figure>
-                          <img src={`http://localhost:5001/${category.image}`} style={{height: "150px", borderRadius: "50%"}} alt="Product Thumbnail" className="category-card-img" />
+                          <img src={`https://ceylon-organic-back-end-production.up.railway.app/${category.image}`} style={{height: "150px", borderRadius: "50%"}} alt="Product Thumbnail" className="category-card-img" />
                         </figure>
                         <div className="d-flex flex-column text-center">
                           <h3 className="category-title">{category.name}</h3>
