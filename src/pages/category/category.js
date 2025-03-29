@@ -48,7 +48,7 @@ const Dashboard = () => {
                         <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category.description}</td>
-                            <td><img src={`https://ceylon-organic-back-end-production.up.railway.app/${category.image}`} width="50" alt={category.name} /></td>
+                            <td><img src={`${process.env.REACT_APP_API_URL}/${category.image}`} width="50" alt={category.name} /></td>
                             <td>
                                 <button onClick={() => navigate(`/edit-category/${category._id}`)} className="btn btn-warning">Edit</button>
                                 <button onClick={() => handleDelete(category._id)} className="btn btn-danger">Delete</button>

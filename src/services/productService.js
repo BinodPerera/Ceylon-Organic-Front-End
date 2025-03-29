@@ -1,4 +1,4 @@
-const API_URL = "https://ceylon-organic-back-end-production.up.railway.app/api/product";
+const API_URL = `${process.env.REACT_APP_API_URL}/api/product`;
 // const API_URL = "http://localhost:5001/api/product";
 
 // send request to insert Product
@@ -54,7 +54,7 @@ export const getProductsById = async (id) => {
 
 export const getProductsByCategory = async (category) => {
     try {
-        const response = await fetch(`${API_URL}/category/${category}`);
+        const response = await fetch(`${process.env.API_URL}/category/${category}`);
 
         if(!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 

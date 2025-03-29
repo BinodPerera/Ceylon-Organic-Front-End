@@ -121,7 +121,7 @@ function Home(){
                             <div className="product-item">
                                 <figure>
                                 <a href={`/product-details/${product._id}`} title="Product Title">
-                                    <img src={`https://ceylon-organic-back-end-production.up.railway.app/${product.image}`} alt="Product Thumbnail" className="tab-image" />
+                                    <img src={`${process.env.REACT_APP_API_URL}/${product.image}`} alt="Product Thumbnail" className="tab-image" />
                                 </a>
                                 </figure>
                                 <div className="d-flex flex-column text-center">

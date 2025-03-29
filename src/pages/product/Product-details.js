@@ -32,7 +32,7 @@ const ProductDetails = () => {
             !product ? <h1>Loading..!</h1> :
             <div className="row">
                 <div className="col-md-6">
-                    <img src={`https://ceylon-organic-back-end-production.up.railway.app/${product.image}`} alt="Product Thumbnail" className="product-img-fluid" />
+                    <img src={`${process.env.REACT_APP_API_URL}/${product.image}`} alt="Product Thumbnail" className="product-img-fluid" />
                 </div>
                 <div className="col-md-6">
                     <h2 className="product-name">{product.name}</h2>

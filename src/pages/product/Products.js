@@ -6,9 +6,6 @@ import { getCategories } from "../../services/categoryService";
 // import css file
 import "./Products.css";
 
-const dotenv = require("dotenv");
-dotenv.config();
-
 function Products() {
 
   const [products, setProducts] = useState([]);
@@ -71,7 +68,7 @@ function Products() {
               <div className="product-item">
                 <figure>
                   <a href={`/product-details/${product._id}`} title="Product Title">
-                    <img src={`${process.env.API_URL}/${product.image}`} alt="Product Thumbnail" className="tab-image" />
+                    <img src={`${process.env.REACT_APP_API_URL}/${product.image}`} alt="Product Thumbnail" className="tab-image" />
                   </a>
                 </figure>
                 <div className="d-flex flex-column text-center">

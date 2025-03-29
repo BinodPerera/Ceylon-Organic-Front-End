@@ -66,7 +66,7 @@ const Dashboard = () => {
                             <td>{product.description}</td>
                             <td>{product.price}</td>
                             <td>{getCategoryName(product.category)}</td>
-                            <td><img src={`https://ceylon-organic-back-end-production.up.railway.app/${product.image}`} width="50" alt={product.name} /></td>
+                            <td><img src={`${process.env.REACT_APP_API_URL}/${product.image}`} width="50" alt={product.name} /></td>
                             <td>
                                 <button onClick={() => navigate(`/edit-product/${product._id}`)} className="btn btn-warning">Edit</button>
                                 <button className="btn btn-danger">Delete</button>

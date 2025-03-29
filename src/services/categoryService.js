@@ -1,5 +1,4 @@
-const API_URL = "https://ceylon-organic-back-end-production.up.railway.app/api/category";
-// const API_URL = "http://localhost:5001/api/category";
+const API_URL = `${process.env.REACT_APP_API_URL}/api/category`;
 
 // ✅ Get All Categories
 export const getCategories = async () => {
