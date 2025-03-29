@@ -31,10 +31,10 @@ const Register = () => {
     }
 
     return (
-        <div class="register-container">
+        <div className="register-container" style={{ listStyle: "none"}}>
             <h2 className="text-center">Create Account</h2>
             <form onSubmit={handleRegister}>
-                <div class="mb-3 mt-3">
+                <div className="mb-3 mt-3">
                     <input 
                         type="text" 
                         className="form-control mb-2" 
@@ -44,7 +44,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div class="mb-3 mt-3">
+                <div className="mb-3 mt-3">
                     <input 
                         type="email" 
                         className="form-control mb-2" 
@@ -54,7 +54,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <input 
                         type="password" 
                         className="form-control mb-2"  
@@ -64,7 +64,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <input 
                         type="password" 
                         className="form-control mb-2"  
