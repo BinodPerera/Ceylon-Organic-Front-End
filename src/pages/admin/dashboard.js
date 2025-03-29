@@ -10,8 +10,8 @@ const Dashboard = () => {
         const fetchProfile = async () => {
             const result = await getProfile();
             if (result.error) {
-                navigate("/login"); // Redirect if not authenticated
-                console.error("User Logged out!" ,result.error);
+                // navigate("/login"); // Redirect if not authenticated
+                // console.error("User Logged out!" ,result.error);
             } else {
                 setUser(result);
             }
