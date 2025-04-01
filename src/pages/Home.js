@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getProducts } from "../services/productService";
+import { CartContext } from "../context/CartContext";
 
 // importing components
 import Category from "../components/Category";
@@ -7,6 +8,8 @@ import Category from "../components/Category";
 import "./Home.css";
 
 function Home(){
+
+    const { addToCart } = useContext(CartContext);
 
     document.title = "Home - Organic Foods";
 
@@ -144,7 +147,11 @@ function Home(){
                                     <div className="button-area p-3 pt-0">
                                         <div className="row g-1 mt-2">
                                         <div className="col-3"><input type="number" name="quantity" className="form-control border-dark-subtle input-number quantity" /></div>
-                                        <div className="col-7"><a href="#" className="btn btn-primary rounded-1 p-2 fs-7 btn-cart"><svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart</a></div>
+                                        <div className="col-7">
+                                            <button className="btn btn-primary rounded-1 p-2 fs-7 btn-cart" onClick={() => addToCart(product)}>
+                                                <svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart
+                                            </button>
+                                        </div>
                                         <div className="col-2"><a href="#" className="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18" height="18"><use xlinkHref="#heart"></use></svg></a></div>
                                         </div>
                                     </div>

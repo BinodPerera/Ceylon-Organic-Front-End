@@ -11,3 +11,23 @@
     background-color: #60ea1b;
     color: #000000;
 }
+
+.cart-btn{
+    border: 0px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-item-count {
+    background-color: red;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

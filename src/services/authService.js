@@ -75,3 +75,20 @@ export const logoutUser = async () => {
     }
 };
 
+export const isLogged = async () => {
+    try {
+        const response = await fetch(`${API_URL}/is-logged`, {
+            method: "GET",
+            credentials: "include",
+        });
+        if (response.status === 200) {
+            const data = await response.json();
+            return data.authenticated;
+        }
+    }
+    catch (error) {
+        console.error("Error: ", error);
+        return false;
+    }
+}
+

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 // importing react-router-dom
@@ -34,17 +34,20 @@ import AddCategory from './pages/category/AddCategory';
 import EditCategory from './pages/category/EditCategory';
 
 
-
 function App() {
+
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <div className="App">
       <Router>
-      <Header />
-      <Cart />
+      <Header setShowCart={setShowCart} showCart={showCart} />
+      {showCart && <Cart setShowCart={setShowCart} />}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/products" element={<Products />} />
         <Route path="/products/:category_id" element={<Products />} />
