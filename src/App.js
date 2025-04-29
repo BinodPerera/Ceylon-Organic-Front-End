@@ -50,7 +50,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
 
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:category_id" element={<Products />} />
+        <Route path="/products/category/:category_id" element={<Products />} />
+        <Route path="/products/search/:search_text" element={<Products />} />
         <Route path="/add-product" element={<div class="container-fluid"><div class="row"><SideNav /><InsertProduct /></div></div>} />
         <Route path="/manage-products" element={<div class="container-fluid"><div class="row"><SideNav /><ManageProduct /></div></div>} />
         <Route path="/edit-product/:id" element={<div class="container-fluid"><div class="row"><SideNav /><EditProduct /></div></div>} />

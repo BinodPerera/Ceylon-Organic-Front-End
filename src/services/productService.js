@@ -54,16 +54,17 @@ export const getProductsById = async (id) => {
 
 export const getProductsByCategory = async (category) => {
     try {
-        const response = await fetch(`${process.env.API_URL}/category/${category}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/product/category/${category}`);
 
         if(!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
         return await response.json();
     }
     catch (error) {
+        console.error("Error fetching products by category:", error);
         return [];
     }
-}
+};
+
 
 // send request to update product
 export const updateProduct = async (id, formData) => {
@@ -97,5 +98,19 @@ export const deleteProduct = async (id) => {
     }
     catch (error) {
         return { error: "Something went wrong!"};
+    }
+};
+
+// send request to get product by search
+export const getProductsBySearch = async (search) => {
+    try {
+        const response = await fetch(`${API_URL}/search/${search}`);
+
+        if(!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        return await response.json();
+    }
+    catch (error) {
+        return [];
     }
 };

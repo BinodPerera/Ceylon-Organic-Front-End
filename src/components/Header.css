@@ -1,9 +1,19 @@
+.img-fluid{
+    min-width: 200px;
+}
+
 .nav-btn {
     border-radius: 10px;
     border: none;
     background-color: #84e066;
     color: #fff;
+    height: 40px;
 }
+
+/* .nav-item{
+    background-color: #84e066;
+    border: 1px solid black;
+} */
 
 .nav-btn:hover {
     /* adding transition */
@@ -17,6 +27,9 @@
     border-radius: 5px;
     display: flex;
     justify-content: center;
+    margin: 10px;
+    justify-content: center;
+    padding: 5px 20px;
 }
 
 .cart-item-count {
@@ -30,4 +43,10 @@
     justify-content: center;
     align-items: center;
     color: white;
+}
+
+.search-input{
+    border: 5px solid #84e066;
+    border-radius: 50%;
+    min-width: 150px;
 }

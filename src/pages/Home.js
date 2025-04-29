@@ -41,7 +41,7 @@ function Home(){
                         <h2 className="carousel-text-heading">Fresh Organics in Sri Lanka</h2>
                         <p className="carousel-text-secondary-heading">We will provide fresh organics to your doorstep!</p>
                         <div className="d-flex gap-3">
-                        <a href="/products" className="btn btn-primary bg-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">View Store</a>
+                        <a href="/products" className="btn btn-primary bg-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3" style={{border: "0px solid transparent"}}>View Store</a>
                         <a href="/contact" className="btn btn-dark text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Contact us</a>
                         </div>
                         <div className="row my-5">
@@ -110,7 +110,7 @@ function Home(){
 
                     <div className="section-header d-flex flex-wrap justify-content-between my-4">
                     
-                    <h2 className="section-title">Products</h2>
+                    <h2 className="section-title">Today Fresh Organics</h2>
                     
                     </div>
                     
@@ -140,19 +140,12 @@ function Home(){
                                         <span>(41)</span>
                                     </div>
                                     <div className="d-flex justify-content-center align-items-center gap-2">
-                                        <del>${product.price}</del>
-                                        <span className="text-dark fw-semibold">${product.price - (product.price)*0.01}</span>
-                                        <span className="badge border border-dark-subtle rounded-0 fw-normal px-1 fs-7 lh-1 text-body-tertiary">10% OFF</span>
+                                        <span className="text-dark fw-semibold">Rs. {product.price}/=</span>
                                     </div>
                                     <div className="button-area p-3 pt-0">
                                         <div className="row g-1 mt-2">
-                                        <div className="col-3"><input type="number" name="quantity" className="form-control border-dark-subtle input-number quantity" /></div>
-                                        <div className="col-7">
-                                            <button className="btn btn-primary rounded-1 p-2 fs-7 btn-cart" onClick={() => addToCart(product)}>
-                                                <svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart
-                                            </button>
-                                        </div>
-                                        <div className="col-2"><a href="#" className="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18" height="18"><use xlinkHref="#heart"></use></svg></a></div>
+                                        <div className="col-7"  style={{ width: "100%"}}><button onClick={() => addToCart(product)} className="btn btn-primary rounded-1 p-2 fs-7 btn-cart"><svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart</button></div>
+                                        {/* <div className="col-2"><a href="#" className="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18" height="18"><use xlinkHref="#heart"></use></svg></a></div> */}
                                         </div>
                                     </div>
                                 </div>

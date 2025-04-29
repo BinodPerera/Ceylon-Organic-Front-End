@@ -26,7 +26,7 @@ function Category(){
 
                 <div className="section-header d-flex flex-wrap justify-content-between my-4">
                   
-                  <h2 className="section-title">Categories</h2>
+                  <h2 className="section-title">Our Product Categories</h2>
                   
                 </div>
                 
@@ -34,10 +34,10 @@ function Category(){
             </div>
             
             <div className="container">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
               {categories.map((category, index) => (
                 <li key={category._id} style={{listStyleType: "none"}}>
-                  <a href={`/products/${category._id}`} style={{ textDecoration: "none" }}>
+                  <a href={`/products/category/${category._id}`} style={{ textDecoration: "none" }}>
                     <div className="col">
                       <div className="product-item">
                         <figure>

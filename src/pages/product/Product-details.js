@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 import { getProductsById } from "../../services/productService";
 
@@ -7,9 +8,9 @@ import "./Product-details.css";
 
 const ProductDetails = () => {
 
+    const { addToCart } = useContext(CartContext);
+
     const { product_id } = useParams();
-
-
 
     const [product, setProduct] = useState({});
 
@@ -40,7 +41,7 @@ const ProductDetails = () => {
                     <p className="product-price">Price: ${product.price}</p>
                     <p className="product-category">Category: {product.category}</p>
                     <br />
-                    <button className="btn btn-secondary">Add to Cart</button>
+                    <button className="btn btn-secondary" onClick={() => addToCart(product)}>Add to Cart</button>
                 </div>
             </div>
 

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { getProducts, getProductsByCategory } from "../../services/productService";
+import React, { useState, useEffect, useContext } from "react";
+import { getProducts, getProductsByCategory, getProductsBySearch } from "../../services/productService";
 import { useParams } from "react-router-dom";
-import { getCategories } from "../../services/categoryService";
+import { CartContext } from "../../context/CartContext";
 
 // import css file
 import "./Products.css";
 
 function Products() {
 
+  const { addToCart } = useContext(CartContext);
+
   const [products, setProducts] = useState([]);
-  const { category_id } = useParams();
+  const { category_id, search_text } = useParams();
 
   useEffect(() => {
     // Fetch products immediately when the component mounts
@@ -26,23 +28,22 @@ function Products() {
 
   // Fetch products
   const fetchProducts = async () => {
-    const response = await getProducts();
-    
-    if(category_id){
-      const response = await getProductsByCategory(category_id);
-      setProducts(response);
+    try {
+      if (category_id) {
+        const response = await getProductsByCategory(category_id);
+        setProducts(response);
+      } else if (search_text) {
+        const response = await getProductsBySearch(search_text);
+        setProducts(response);
+      } else {
+        const response = await getProducts();
+        setProducts(response);
+      }
+    } catch (error) {
+      setProducts([]);
     }
-    else{
-      const response = await getProducts();
-      setProducts(response);
-    }
-  }
-
-  // Fetch categories
-  // const fetchCategories = async () => {
-  //   const response = await getCategories();
-    //console.log(response);
-  // }
+  };
+  
 
   return (
     <section className="pb-5">
@@ -61,7 +62,7 @@ function Products() {
         </div>
         
         {!products ? <h1>Loading..!</h1> :
-          <div className="card-container">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
             {products.map((product, index) => (
               <li key={product._id} style={{listStyleType: "none"}}>
               <div className="col">
@@ -84,15 +85,12 @@ function Products() {
                     <span>(41)</span>
                   </div>
                   <div className="d-flex justify-content-center align-items-center gap-2">
-                    <del>${product.price}</del>
-                    <span className="text-dark fw-semibold">${product.price - (product.price)*0.01}</span>
-                    <span className="badge border border-dark-subtle rounded-0 fw-normal px-1 fs-7 lh-1 text-body-tertiary">10% OFF</span>
+                    <span className="text-dark fw-semibold">${product.price}</span>
                   </div>
                   <div className="button-area p-3 pt-0">
-                    <div className="row g-1 mt-2">
-                      <div className="col-3"><input type="number" name="quantity" className="form-control border-dark-subtle input-number quantity" /></div>
-                      <div className="col-7"><a href="#" className="btn btn-primary rounded-1 p-2 fs-7 btn-cart"><svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart</a></div>
-                      <div className="col-2"><a href="#" className="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18" height="18"><use xlinkHref="#heart"></use></svg></a></div>
+                  <div className="row g-1 mt-2">
+                    <div className="col-7"  style={{ width: "100%"}}><button onClick={() => addToCart(product)} className="btn btn-primary rounded-1 p-2 fs-7 btn-cart"><svg width="18" height="18"><use xlinkHref="#cart"></use></svg> Add to Cart</button></div>
+                    {/* <div className="col-2"><a href="#" className="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18" height="18"><use xlinkHref="#heart"></use></svg></a></div> */}
                     </div>
                   </div>
                 </div>
