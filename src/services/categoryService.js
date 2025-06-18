@@ -13,7 +13,7 @@ export const getCategories = async () => {
         return Array.isArray(data) ? data : []; // ✅ Ensure it's an array
     } catch (error) {
         console.error("Error fetching categories:", error);
-        return []; // ✅ Return empty array to prevent `.map()` errors
+        return false;
     }
 };
 

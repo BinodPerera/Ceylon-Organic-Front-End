@@ -6,10 +6,12 @@ import { CartContext } from "../context/CartContext";
 import Category from "../components/Category";
 
 import "./Home.css";
+import { set } from "mongoose";
 
 function Home(){
 
     const { addToCart } = useContext(CartContext);
+    const [ alertError, setAlert ] = useState(null);
 
     document.title = "Home - Organic Foods";
 
@@ -28,8 +30,12 @@ function Home(){
       // Fetch products
       const fetchProducts = async () => {
         const response = await getProducts();
-        setProducts(response);
-        // console.log(response);
+        if( response !== false ){
+            setProducts(response);
+        }else{
+            setAlert(true);
+            setProducts([]); // Clear products if fetch fails
+        }
       }
     
     return (
@@ -116,8 +122,15 @@ function Home(){
                     
                 </div>
                 </div>
+
+                {alertError && (
+                    <div class="alert alert-danger">
+                    <strong>Sorry!</strong><br />Failed to fetch products. Please try again later. <br /><i><span>reason: API not Alive</span></i>
+                    </div>
+                )}
                 
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                    
                 {products.map((product, index) => (
                     <li key={product._id} style={{listStyleType: "none"}}>
                         <div className="col">

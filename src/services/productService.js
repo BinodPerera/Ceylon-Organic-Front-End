@@ -34,7 +34,7 @@ export const getProducts = async () => {
     }
     catch (error) {
         console.error("Error fetching products:", error);
-        return [];
+        return false;
     }
 };
 

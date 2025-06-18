@@ -6,6 +6,7 @@ import "./Category.css";
 function Category(){
 
     const [ categories, setCategories] = useState([]);
+    const [ alertError, setErrorAlert ] = useState(false);
 
     useEffect(() => {
         fetchCategories();
@@ -13,8 +14,13 @@ function Category(){
 
     const fetchCategories = async () => {
         const response = await getCategories();
-        setCategories(response);
-        // console.log(response);
+        if(response !== false){
+          setCategories(response);
+        }else{
+          setErrorAlert(true);
+          setCategories([]); // Clear categories if fetch fails
+        }
+        
     };
 
     return(
@@ -32,6 +38,14 @@ function Category(){
                 
               </div>
             </div>
+
+            {alertError && (
+              <div className="alert alert-danger" role="alert">
+                <b>Sorry!</b> <br/>
+                Failed to load categories. Please try again later. <br/>
+                <i><span>Reason: API not Alive</span></i>
+              </div>
+            )}
             
             <div className="container">
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
