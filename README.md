@@ -34,7 +34,7 @@ Ceylon Organics is a modern MERN stack-based e-commerce website focused on organ
 | Frontend       | React, React Router DOM, Axios |
 | Styling        | Bootstrap 5, CSS |
 | Auth           | JSON Web Token (JWT) |
-| Backend API    | Node.js + Express ([Repo Link](https://github.com/YOUR_BACKEND_REPO)) |
+| Backend API    | Node.js + Express ([Repo Link](https://github.com/BinodPerera/Ceylon-Organic-Back-End.git)) |
 | Database       | MongoDB Atlas |
 | Hosting        | Vercel (Frontend), Railway (Backend) |
 
