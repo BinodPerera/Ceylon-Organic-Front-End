@@ -1,10 +1,28 @@
 import React, { useContext} from "react";
-import { CartContext } from "../context/CartContext";
-
 import "./Cart.css";
+import { CartContext } from "../context/CartContext";
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_51QDfqJBspLhR4MdYlgYWlzs6zQvLSfMWRfKjJciFrsrWfK8lmv22ERB3bCu3a4ZKmqtHPxghTY4dEgZf0a96s8GD00wWS2U0VX');
+
+
 
 function Cart({ setShowCart}) {
   const { cart, removeFromCart, clearCart } = useContext(CartContext);
+
+  console.log(cart);
+
+  const handleCheckout = async () => {
+    const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: Math.round(totalAmount * 100) }) // Convert to cents
+    });
+
+    const data = await res.json();
+    const stripe = await stripePromise;
+    await stripe.redirectToCheckout({ sessionId: data.id });
+  };
   
   return (
     <div className="container my-5 border cart-container" style={{ position: "fixed", top: "40px", right: "0", width: "400px", backgroundColor: "#fff", zIndex: 1000 }}>
@@ -36,7 +54,7 @@ function Cart({ setShowCart}) {
         <h3>Total: ${cart.reduce((total, item) => total + item.price, 0).toFixed(2)}</h3>
       </div>}
       {cart.length > 0 && <button className="btn btn-danger cart-btn-bottom" onClick={clearCart}>Clear Cart</button>}
-      {cart.length > 0 && <button className="nav-btn cart-btn-bottom">Checkout</button>}
+      {cart.length > 0 && <button onClick={handleCheckout} className="nav-btn cart-btn-bottom">Checkout</button>}
     </div>
   );
 }
