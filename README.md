@@ -16,7 +16,7 @@ Ceylon Organics is a modern MERN stack-based e-commerce website focused on organ
 
 ---
 
-## 🚀 Features
+## 🚀 Features -
 
 - ✅ Secure JWT Authentication
 - 🛒 Add to Cart / Remove from Cart
